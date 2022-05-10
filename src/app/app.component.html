@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title m-0"> Auoto complete functionality</h2>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="form-wrapper">
+            <div class="form-row">
+                <mat-form-field class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <input type="text" matInput placeholder="Enter State Name" name="state" [(ngModel)]="state"
+                        [matAutocomplete]="auto" (ngModelChange)="state.length > 2 && searchStateByName()"
+                        (blur)="notSelectedFromList()" required>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
+                        <mat-option *ngFor="let o of filterdStates" [value]="o">{{o}}</mat-option>
+                    </mat-autocomplete>
+                    <mat-hint>Start typing the State Name.</mat-hint>
+                    <mat-error>This field is required.</mat-error>
+                    <mat-error *ngIf="onOptionSelected">Select the value only from the List.</mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+</div>
+<!-- /.card -->
